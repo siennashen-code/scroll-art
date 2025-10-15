@@ -1,8 +1,24 @@
+import java.util.Random;
+
 public class Halloween {
-    static final String squashed_ghost = "   .---.     '     '   | o   o |  |   ~   | <|       |> |       \\_  \\       /    -----' ";
+    static final String squashed_ghost1 = "   .---.     '     '   | o   o |  |   ~   | <|       |> |       \\_  \\       /    -----' ";
+    static final String squashed_ghost2 = "   .---.     '     '   | @   @ |  |   U   | <|       |> |       \\_  \\       /    -----' ";
+    static final Random rand = new Random();
     public static void main(String[] args) throws Exception {
-        char[][] ghost = makeObject(squashed_ghost, 8, 11);
-        printObject(ghost, 0);
+        char[][] ghost1 = makeObject(squashed_ghost1, 8, 11);
+        char[][] ghost2 = makeObject(squashed_ghost2, 8, 11);
+
+        while (true){
+
+            double roll = rand.nextDouble(0,1);
+            if (roll < 0.5){
+                printObject(ghost1, rand.nextInt(0,109));
+            }else{
+                printObject(ghost2, rand.nextInt(0,109));
+            }
+            
+            Thread.sleep(200);
+        }
     }
 
     static char[][] makeObject(String characters, int n_rows, int n_cols){ //make 2D array of static art given its squashed version and dimensions
