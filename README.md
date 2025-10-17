@@ -1,7 +1,3 @@
-## Getting Started
-
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
 ## Folder Structure
 
 The workspace contains two folders by default, where:
@@ -9,10 +5,16 @@ The workspace contains two folders by default, where:
 - `src`: the folder to maintain sources
 - `lib`: the folder to maintain dependencies
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## My ASCII Art
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- 'Halloween.java": Prints ghosts at random locations on the terminal, row by row.
+- "DNA.java": Prints out a strand of DNA, row by row. The length of each base pair is randomly generated.
 
-## Dependency Management
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Citation Points
+
+Halloween.java: The ghost outline was inspired by a design by Eel Sansho (https://note.com/sansho_eel/n/n6e9c57e2140b), but the interior of the ghost was designed by me --> 1.5 citation points
+
+DNA.java: The "sugar-phosphate backbone" of the DNA strand was inspired by a design by daroking (https://www.tumblr.com/darokin/158909750687/dnascii), but the base pairs were designed by me --> 1.5 citation points
+
+Average citation points: 1.5
