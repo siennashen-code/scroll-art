@@ -3,17 +3,20 @@ import java.util.Random;
 public class DNA {
     
     static final Random rand = new Random();
-    static char[][] gene = new char[11][15];
-    static final int geneWidth = gene[0].length;
-    static char[][] painting = new char[11][120];
+
+    static final int geneRow = 11; //length of gene array
+    static final int geneCol = 15; //width of gene array
+    static char[][] gene = new char[geneRow][geneCol]; //array containing characters of 1 gene
+
+    static char[][] painting = new char[geneRow][120]; //array storing rows that will be printed in terminal
     public static void main(String[] args) throws Exception{
 
-        blankCanvas();
+        makeBlankCanvas();
 
         while(true){
             makeGene();
             loadGene();
-            for(int i = 0; i < painting.length; i++){
+            for(int i = 0; i < geneRow; i++){
                 printRow(i);
                 Thread.sleep(60);
             }
@@ -21,8 +24,8 @@ public class DNA {
 
     } 
 
-    static void blankCanvas(){
-      for(int i = 0; i < 11; ++i) {
+    static void makeBlankCanvas(){
+      for(int i = 0; i < geneRow; ++i) {
          for(int j = 0; j < 120; ++j) {
             painting[i][j] = '\'';
          }
@@ -30,28 +33,28 @@ public class DNA {
     }
 
     static void loadGene(){ //updates painting based off generated gene array
-        int generow = 0;
-        int genecol = 0;
+        int row = 0;
+        int col = 0;
         for(int i = 0; i < painting.length; i++){
-            for(int j = 52; j< 52+15; j++){
-                painting[i][j] = gene[generow][genecol];
-                genecol++;
+            for(int j = 52; j < 52 + geneCol; j++){
+                painting[i][j] = gene[row][col];
+                col++;
             }
-            genecol = 0;
-            generow++;
+            col = 0;
+            row++;
         }
     }
 
     static void makeGene(){ //creates array of one segment of the DNA helix
-        for(int i = 0; i < gene.length; i++){ //first fill array with (') character
-            for (int j = 0; j < geneWidth; j++){
+        for(int i = 0; i < geneRow; i++){ //first fill array with (') character
+            for (int j = 0; j < geneCol; j++){
                 gene[i][j] = '\'';
             }
         }
 
         gene[0][7] = '0'; //first layer
 
-        for(int row = 1; row < gene.length; row++){ //for the rest of the layers
+        for(int row = 1; row < geneRow; row++){ //for the rest of the layers
             
             int start = 0; //how far to the left the sides of each layer are
             
@@ -67,16 +70,16 @@ public class DNA {
             gene[row][start] = '0';
             gene[row][start+1] = '0';
 
-            gene[row][geneWidth - start-1] = '0';
-            gene[row][geneWidth - start -2] = '0';
+            gene[row][geneCol - start-1] = '0';
+            gene[row][geneCol - start -2] = '0';
 
             //DNA nitrogenous bases with randomly generated lengths
             if(row == 2 || row == 4 || row == 5 || row == 7 || row == 9){
-                for (int col = start + 2; col < geneWidth-start-1; col++){
+                for (int col = start + 2; col < geneCol-start-1; col++){
                     gene[row][col] = '=';
                 }
 
-                gene[row][rand.nextInt(start+2, geneWidth-start-1)] = '.';
+                gene[row][rand.nextInt(start+2, geneCol-start-1)] = '.';
             }
         }
     }
